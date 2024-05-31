@@ -11,9 +11,15 @@ class TransactionController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $transactions = Transaction::with('customer')->paginate(10);
+        $transactions = Transaction::with('customer')->orderBy('created_at', $request->input('order') ?? 'asc')->paginate(10);
+
+        if ($request->has('s')) {
+            $transactions = Transaction::whereHas('customer', function ($query) use ($request) {
+                $query->where('nama', 'LIKE', '%' . $request->input('s') . '%');
+            })->paginate(10);
+        }
 
         return view('pages.transactions', [
             'transactions' => $transactions
@@ -25,7 +31,7 @@ class TransactionController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.transactions.store');
     }
 
     /**

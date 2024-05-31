@@ -12,9 +12,13 @@ class PacketController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $packets = Packet::paginate(10);
+        $packets = Packet::orderBy('created_at', $request->input('order') ?? 'asc')->paginate(10);
+
+        if ($request->has('s')) {
+            $packets = Packet::where('nama', 'LIKE', '%' . $request->input('s') . '%')->paginate(10);
+        }
 
         return view('pages.packets', ['packets' => $packets]);
     }
@@ -63,7 +67,7 @@ class PacketController extends Controller
             'harga' => 'nullable|integer|min:1000'
         ]);
 
-        if($validator->fails()) return redirect()->route('packet')->withErrors(['error' => $validator->errors()]);
+        if ($validator->fails()) return redirect()->route('packet')->withErrors(['error' => $validator->errors()]);
 
         $packet->update($validator->validated());
 

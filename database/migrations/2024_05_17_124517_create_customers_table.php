@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
             $table->foreignId('packet_id')->references('id')->on('packets');
+            $table->string('nama');
             $table->string('alamat');
             $table->date('tanggal_awal_berlangganan');
             $table->string('keterangan')->nullable();

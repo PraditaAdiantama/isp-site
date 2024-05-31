@@ -1,6 +1,7 @@
 <x-modal text="Tambah Customer" id="add">
     <form action="{{ route('customers.store') }}" method="POST">
         @csrf
+        <x-input label="Nama Customer" name="nama"/>
         <x-textarea label="Alamat" name="alamat" />
         <x-input label="Tanggal Awal Berlangganan" name="tanggal_awal_berlangganan" type="date" />
         <div class="grid grid-cols-2 gap-2">

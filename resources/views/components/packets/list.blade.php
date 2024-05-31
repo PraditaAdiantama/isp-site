@@ -14,5 +14,7 @@
         @empty
         @endforelse
     </x-table>
-    {{ $packets->links() }}
+    <div class="mt-2">
+        {{ $packets->links() }}
+    </div>
 </div>

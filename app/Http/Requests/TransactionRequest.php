@@ -28,4 +28,12 @@ class TransactionRequest extends FormRequest
             'keterangan' => 'nullable|string|min:3'
         ];
     }
+
+    public function messages(): array
+    {
+        return [
+            'customer_id.required' => 'Nama customer belum terdaftar',
+            'tanggal_bayar.required' => 'Tanggal Bayar harus di isi',
+        ];
+    }
 }

@@ -10,7 +10,7 @@
         <div class="grid grid-cols-2 gap-2">
             <x-select label="Paket" name="packet_id">
                 @foreach ($packets as $packet)
-                    <option value="{{ $packet->id }}" {{ $customer->packet->id == $packet->id ?? 'selected' }}>
+                    <option value="{{ $packet->id }}" {{ $customer->packet->id == $packet->id ? 'selected' : '' }}>
                         {{ $packet->nama }}</option>
                 @endforeach
             </x-select>

@@ -22,8 +22,18 @@ class PacketRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nama' => 'string|min:3',
-            'harga' => 'integer|min:1000'
+            'nama' => 'required|string|min:3',
+            'harga' => 'required|integer|min:1000'
+        ];
+    }
+
+    public function messages():array
+    {
+        return [
+            'nama.required' => 'Nama paket harus di isi',
+            'harga.required' => 'Harga paket harus di isi',
+            'nama.min' => 'Nama paket tidak boleh kurang dari 3 karakter',
+            'harga.min' => 'Harga paket tidak tidak boleh kurang dari Rp. 1000'
         ];
     }
 }

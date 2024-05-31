@@ -3,9 +3,7 @@
         @csrf
         <div>
             <x-input id="customer" label="Alamat Customer" oninput="handleChange()" required />
-            <div class="bg-white fixed z-20" id="customer_select">
-
-            </div>
+            <div class="bg-white fixed z-20" id="customer_select"></div>
         </div>
         <input type="text" class="hidden" id="customer_id" name="customer_id">
         <input type="text" class="hidden" id="user_id" name="user_id" value="{{ Auth::user()->id }}">

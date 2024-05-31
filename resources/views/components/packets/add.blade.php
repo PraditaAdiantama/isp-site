@@ -4,7 +4,7 @@
         <x-input label="Nama Paket" name="nama" placeholder="Nama Paket" />
         <x-input label="Harga" name="harga" placeholder="Harga" type="number" />
         <div class="flex justify-end w-full gap-2 mt-4">
-            <x-button text="Batal" color="gray" onclick="add.close()" />
+            <x-button text="Batal" color="gray" type="button" onclick="add.close()" />
             <x-button text="Tambah" />
         </div>
     </form>

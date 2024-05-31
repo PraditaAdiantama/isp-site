@@ -1,4 +1,4 @@
-<form class="flex">
+<form class="flex" method="GET" >
     <button class="border-l border-t border-b border-black p-2 rounded-l-md">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
             style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
@@ -7,7 +7,7 @@
             </path>
         </svg>
     </button>
-    <input type="text"
+    <input type="text" name="s"
         class="bg-transparent focus:outline-none border-r border-t border-b border-black p-2 rounded-r-md"
         placeholder="Search">
 </form>

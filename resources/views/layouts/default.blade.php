@@ -22,11 +22,13 @@
     <main class="flex">
         <x-sidebar />
         <div class="w-10/12 md:w-9/12 mx-auto">
+            <div class="flex justify-end">
+                @include('components.alert.error')
+                @include('components.alert.success')
+            </div>
             @yield('content')
         </div>
     </main>
-
-    
 </body>
 
 </html>

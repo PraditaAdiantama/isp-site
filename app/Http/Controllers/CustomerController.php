@@ -15,14 +15,17 @@ class CustomerController extends Controller
      */
     public function index(Request $request)
     {
-        $customers = Customer::with('packet')->paginate(10);        
+        $customers = Customer::with('packet')->orderBy('created_at', $request->input('order') ?? 'asc')->paginate(10);
         $packets = Packet::all();
-        
+
         if ($request->has('search')) {
-            $customers = Customer::where('alamat', 'LIKE', "%" . $request->input('search') . "%")->paginate(10);
+            $customers = Customer::where('nama', 'LIKE', "%" . $request->input('search') . "%")->paginate(10);
 
             return response()->json($customers);
         }
+
+        if ($request->has('s')) $customers = Customer::where('nama', 'LIKE', "%" . $request->input('s') . "%")->paginate(10);
+
         return view('pages.customers', [
             'customers' => $customers,
             'packets' => $packets
